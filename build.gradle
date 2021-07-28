@@ -1,0 +1,55 @@
+
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id "com.github.johnrengelman.shadow" version "7.0.0"
+}
+
+
+
+jar {
+  manifest {
+    attributes(
+      'Main-Class': 'me.fulcanelly.deco.App'
+    )
+  }
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+	annotationProcessor 'org.projectlombok:lombok:1.18.20'
+	
+	testCompileOnly 'org.projectlombok:lombok:1.18.20'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    implementation 'org.ow2.asm:asm:9.2'
+    implementation group: 'javassist', name: 'javassist', version: '3.12.1.GA'
+    implementation group: 'org.ow2.asm', name: 'asm-util', version: '9.2'
+    testImplementation 'junit:junit:4.11'
+}
+
+group = 'me.fulcanelly.deco'
+version = '1.0-SNAPSHOT'
+description = 'arist'
+
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
