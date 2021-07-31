@@ -23,7 +23,7 @@ public class ExpressionCollector {
 
         if (count > list.size()) {
             System.out.println(list);
-            System.out.printf("count: %d size: %d\n", count, list.size());
+            System.out.printf("exprected: %d size: %d\n", count, list.size());
             throw new RuntimeException("not enough providen ");
         }
 
