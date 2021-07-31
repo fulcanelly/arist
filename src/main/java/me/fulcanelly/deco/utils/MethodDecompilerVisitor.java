@@ -24,6 +24,8 @@ import me.fulcanelly.deco.utils.expr.AddExpression;
 import me.fulcanelly.deco.utils.expr.AssignVariable;
 import me.fulcanelly.deco.utils.expr.GetField;
 import me.fulcanelly.deco.utils.expr.InvokeMethod;
+import me.fulcanelly.deco.utils.expr.InvokeStatic;
+import me.fulcanelly.deco.utils.expr.LiteralValue;
 import me.fulcanelly.deco.utils.expr.LoadVariableEpression;
 import me.fulcanelly.deco.utils.expr.PrimitiveConversion;
 import me.fulcanelly.deco.utils.expr.ReturnExpression;
@@ -157,5 +159,23 @@ public class MethodDecompilerVisitor {
         );
     }
 
+    @SneakyThrows
+    public void visitInvokeStatic(int index) {
+        var params = Descriptor.getParameterTypes(
+                cPool.getMethodrefType(index), 
+                klass.getClassPool()
+            );
+        expcollect.push(
+            new InvokeStatic(cPool.getMethodrefClassName(index), cPool.getMethodrefName(index), params.length)
+        );
+    }
 
+    public void visitLoadConst(Object value) {
+        expcollect.push(
+            new LiteralValue(value)
+        );
+    }
+
+
+    
 }
