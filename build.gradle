@@ -21,6 +21,10 @@ repositories {
     maven {
         url = uri('https://repo.maven.apache.org/maven2/')
     }
+
+    maven {
+        url 'https://hub.spigotmc.org/nexus/content/groups/public/'
+    }
 }
 
 dependencies {
@@ -32,7 +36,8 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
     implementation 'org.javassist:javassist:3.27.0-GA'
     implementation 'org.ow2.asm:asm:9.2'
-    implementation group: 'javassist', name: 'javassist', version: '3.12.1.GA'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    implementation group: 'org.spigotmc', name: 'spigot-api', version: '[1.16.4,)'
     implementation group: 'org.ow2.asm', name: 'asm-util', version: '9.2'
     testImplementation 'junit:junit:4.11'
 }
