@@ -30,7 +30,7 @@ dependencies {
 	
 	testCompileOnly 'org.projectlombok:lombok:1.18.20'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
-
+    implementation 'org.javassist:javassist:3.27.0-GA'
     implementation 'org.ow2.asm:asm:9.2'
     implementation group: 'javassist', name: 'javassist', version: '3.12.1.GA'
     implementation group: 'org.ow2.asm', name: 'asm-util', version: '9.2'
