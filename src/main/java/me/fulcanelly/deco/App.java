@@ -71,12 +71,21 @@ class ClassVisitor {
             visitor.visitGetField(iter.s16bitAt(index + 1));
         }
 
-        //invokevirtual
-        if (opcode == 182) {
+        //invokevirtual & invokeinterface
+        if (opcode == 182 || opcode == 185) {
             visitor.visitInvokevirtual(iter.s16bitAt(index + 1));
         }
 
+        //invoke static
+        if (opcode == 184) {
+            visitor.visitInvokeStatic(iter.s16bitAt(index + 1));
+        }
 
+        //consts 
+        if (opcode == 1) {
+            visitor.visitLoadConst(null);
+        }
+        
         // if (opcode == 25 )
         // new CodeIterator(iter);
         // iter.byteAt(iter.get)
